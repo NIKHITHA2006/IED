@@ -9,7 +9,7 @@ const StudentInternships = () => {
   useEffect(() => {
     const fetchInternships = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/internships');
+        const res = await axios.get('https://ied-oqka.onrender.com/api/internships');
         setInternships(res.data);
       } catch (error) {
         console.error('Error fetching internships', error);

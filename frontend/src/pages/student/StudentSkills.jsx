@@ -7,7 +7,7 @@ const StudentSkills = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/skills');
+        const res = await axios.get('https://ied-oqka.onrender.com/api/skills');
         setSkills(res.data);
       } catch (error) {
         console.error('Error fetching skills', error);
