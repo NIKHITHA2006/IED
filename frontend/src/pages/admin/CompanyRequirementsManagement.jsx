@@ -24,9 +24,9 @@ const CompanyRequirementsManagement = () => {
   const fetchData = async () => {
     try {
       const [compRes, indRes, skillRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/companies'),
-        axios.get('http://localhost:5000/api/industries'),
-        axios.get('http://localhost:5000/api/skills')
+        axios.get('https://ied-oqka.onrender.com'),
+        axios.get('https://ied-oqka.onrender.com'),
+        axios.get('https://ied-oqka.onrender.com')
       ]);
       setCompanies(compRes.data);
       setIndustries(indRes.data);
@@ -54,9 +54,9 @@ const CompanyRequirementsManagement = () => {
     e.preventDefault();
     try {
       if (editingCompany) {
-        await axios.put(`http://localhost:5000/api/companies/${editingCompany._id}`, formData);
+        await axios.put(`https://ied-oqka.onrender.com/api/companies/${editingCompany._id}`, formData);
       } else {
-        await axios.post('http://localhost:5000/api/companies', formData);
+        await axios.post('https://ied-oqka.onrender.com/api/companies', formData);
       }
       setEditingCompany(null);
       setFormData({ companyName: '', industry: '', requiredSkills: [], description: '', logo: '' });
@@ -80,7 +80,7 @@ const CompanyRequirementsManagement = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this company?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/companies/${id}`);
+        await axios.delete(`https://ied-oqka.onrender.com/api/companies/${id}`);
         fetchData();
       } catch (error) {
         console.error('Error deleting company', error);

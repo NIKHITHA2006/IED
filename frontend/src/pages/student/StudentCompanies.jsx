@@ -9,7 +9,7 @@ const StudentCompanies = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/companies');
+        const res = await axios.get('https://ied-oqka.onrender.com/api/companies');
         setCompanies(res.data);
       } catch (error) {
         console.error('Error fetching companies', error);
