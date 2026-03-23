@@ -54,8 +54,8 @@ const importData = async () => {
 
     // Create Admin
     await User.create({
-      name: 'Admin User',
-      email: 'admin@ied.com',
+      name: 'System Admin',
+      email: 'master@ied.com',
       password: 'admin123',
       role: 'admin'
     });

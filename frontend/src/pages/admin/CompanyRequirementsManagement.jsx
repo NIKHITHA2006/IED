@@ -24,9 +24,9 @@ const CompanyRequirementsManagement = () => {
   const fetchData = async () => {
     try {
       const [compRes, indRes, skillRes] = await Promise.all([
-        axios.get('https://ied-oqka.onrender.com'),
-        axios.get('https://ied-oqka.onrender.com'),
-        axios.get('https://ied-oqka.onrender.com')
+        axios.get('https://ied-oqka.onrender.com/api/companies'),
+        axios.get('https://ied-oqka.onrender.com/api/industries'),
+        axios.get('https://ied-oqka.onrender.com/api/skills')
       ]);
       setCompanies(compRes.data);
       setIndustries(indRes.data);
@@ -91,7 +91,7 @@ const CompanyRequirementsManagement = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Company Requirements Management</h1>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Form Section */}
         <div className="lg:col-span-1 border border-slate-200 dark:border-white/[0.05] rounded-xl p-5 bg-white dark:bg-[#10131a]">
@@ -110,7 +110,7 @@ const CompanyRequirementsManagement = () => {
                 className="w-full bg-white dark:bg-[#1a1d24] border border-slate-200 dark:border-white/[0.1] rounded-lg p-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
-            
+
             <div>
               <label className="block text-slate-500 dark:text-slate-400 mb-1">Logo URL (optional)</label>
               <input
@@ -121,7 +121,7 @@ const CompanyRequirementsManagement = () => {
                 className="w-full bg-white dark:bg-[#1a1d24] border border-slate-200 dark:border-white/[0.1] rounded-lg p-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
-            
+
             <div>
               <label className="block text-slate-500 dark:text-slate-400 mb-1">Industry</label>
               <select
@@ -209,7 +209,7 @@ const CompanyRequirementsManagement = () => {
                   <p className="text-sm text-slate-500 dark:text-slate-400">{company.industry?.name}</p>
                 </div>
               </div>
-              
+
               <div className="flex gap-2 shrink-0">
                 <button
                   onClick={() => handleEdit(company)}
