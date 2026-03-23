@@ -25,13 +25,12 @@ A complete, production-quality full-stack web application designed for students 
 - **Backend**: Node.js, Express.js, JWT, Bcrypt.
 - **Database**: MongoDB (Mongoose).
 - **Reports**: jsPDF, SheetJS (XLSX).
-- **DevOps**: Docker, Docker Compose, GitHub Actions.
 
 ## 📦 Getting Started
 
 ### Prerequisites
 - Node.js (v18+)
-- MongoDB (Running locally or via Docker)
+- MongoDB (Running locally or via MongoDB Atlas)
 
 ### Installation
 
@@ -50,11 +49,6 @@ A complete, production-quality full-stack web application designed for students 
    npm install
    npm run dev
    ```
-
-### Running with Docker
-```bash
-docker-compose up --build
-```
 
 ## 🔐 Credentials (Demo)
 - **Admin**: admin@ied.com / admin123
