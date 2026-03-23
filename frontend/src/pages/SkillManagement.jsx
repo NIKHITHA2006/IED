@@ -67,10 +67,10 @@ const SkillManagement = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Skills</h2>
-          <p className="text-slate-400 text-sm mt-1">{skills.length} skills in global repository</p>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Skills</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">{skills.length} skills in global repository</p>
         </div>
-        <button onClick={openCreate} className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors">
+        <button onClick={openCreate} className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-slate-900 dark:text-white text-sm font-semibold rounded-lg transition-colors">
           <PlusIcon className="w-4 h-4 stroke-[2.5px]" /> Add Skill
         </button>
       </div>
@@ -113,7 +113,7 @@ const SkillManagement = () => {
                   </td>
                   <td className="text-right">
                     <div className="flex justify-end gap-2">
-                      <button onClick={() => openEdit(skill)} className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors">
+                      <button onClick={() => openEdit(skill)} className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors">
                         <PencilIcon className="w-4 h-4" />
                       </button>
                       <button onClick={() => handleDelete(skill._id)} className="p-1.5 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-colors">
@@ -142,24 +142,24 @@ const SkillManagement = () => {
               exit={{ opacity: 0, scale: 0.97, y: 8 }}
               className="modal-box max-w-xl"
             >
-              <h3 className="text-lg font-bold text-white mb-6">{editing ? 'Edit Skill' : 'New Skill'}</h3>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">{editing ? 'Edit Skill' : 'New Skill'}</h3>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Skill Name</label>
+                    <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Skill Name</label>
                     <input required className="input" placeholder="e.g. Machine Learning" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Icon Key</label>
+                    <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Icon Key</label>
                     <input required className="input" placeholder="SparklesIcon" value={form.icon} onChange={(e) => setForm({ ...form, icon: e.target.value })} />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Map to Industries</label>
+                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Map to Industries</label>
                   <div className="grid grid-cols-2 gap-2 max-h-52 overflow-y-auto p-1">
                     {industries.map((ind) => (
-                      <label key={ind._id} className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg border cursor-pointer transition-colors ${form.mappedIndustries.includes(ind._id) ? 'border-indigo-500/50 bg-indigo-500/10 text-slate-200' : 'border-white/8 bg-white/3 text-slate-400 hover:bg-white/5'}`}>
+                      <label key={ind._id} className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg border cursor-pointer transition-colors ${form.mappedIndustries.includes(ind._id) ? 'border-indigo-500/50 bg-indigo-500/10 text-slate-200' : 'border-white/8 bg-white/3 text-slate-500 dark:text-slate-400 hover:bg-white/5'}`}>
                         <input
                           type="checkbox"
                           className="w-3.5 h-3.5 rounded text-indigo-500 accent-indigo-500"
@@ -173,8 +173,8 @@ const SkillManagement = () => {
                 </div>
 
                 <div className="flex gap-3 pt-2">
-                  <button type="button" onClick={() => setModalOpen(false)} className="flex-1 py-2.5 text-sm font-semibold border border-white/10 rounded-lg text-slate-400 hover:bg-white/5 transition-colors">Cancel</button>
-                  <button type="submit" className="flex-1 py-2.5 text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors">Save</button>
+                  <button type="button" onClick={() => setModalOpen(false)} className="flex-1 py-2.5 text-sm font-semibold border border-slate-200 dark:border-white/10 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-white/5 transition-colors">Cancel</button>
+                  <button type="submit" className="flex-1 py-2.5 text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-slate-900 dark:text-white rounded-lg transition-colors">Save</button>
                 </div>
               </form>
             </motion.div>

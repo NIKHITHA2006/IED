@@ -45,14 +45,14 @@ const UserDashboard = () => {
       <div className="card p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-2">Welcome back</p>
-          <h2 className="text-3xl font-bold text-white mb-1">{userInfo.name || 'Student'}</h2>
-          <p className="text-slate-400 text-sm max-w-md">
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-1">{userInfo.name || 'Student'}</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm max-w-md">
             Explore industry verticals, identify your skill gaps, and discover internship opportunities aligned with your goals.
           </p>
         </div>
         <Link
           to="/user/skill-gap"
-          className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors flex-shrink-0"
+          className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-slate-900 dark:text-white text-sm font-semibold rounded-lg transition-colors flex-shrink-0"
         >
           <ChartBarIcon className="w-4 h-4" /> Start Gap Analysis
         </Link>
@@ -66,7 +66,7 @@ const UserDashboard = () => {
           { label: 'Internships', value: internships.length },
         ].map((s, i) => (
           <div key={i} className="card p-5 text-center">
-            <p className="text-3xl font-bold text-white mb-1">{s.value}</p>
+            <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">{s.value}</p>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{s.label}</p>
           </div>
         ))}
@@ -76,7 +76,7 @@ const UserDashboard = () => {
       <section>
         <div className="section-header">
           <div>
-            <h3 className="text-xl font-bold text-white">Industry Verticals</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Industry Verticals</h3>
             <p className="text-sm text-slate-500 mt-0.5">Explore industry domains and their skill requirements</p>
           </div>
         </div>
@@ -94,12 +94,12 @@ const UserDashboard = () => {
               )}
               <div className="p-5">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <h4 className="font-bold text-white text-base leading-tight">{ind.name}</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base leading-tight">{ind.name}</h4>
                   <span className={`badge flex-shrink-0 ${growthColors[ind.growthLevel] || 'badge-blue'}`}>
                     {ind.growthLevel}
                   </span>
                 </div>
-                <p className="text-slate-400 text-xs leading-relaxed line-clamp-2 mb-4">{ind.description}</p>
+                <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed line-clamp-2 mb-4">{ind.description}</p>
                 <Link
                   to="/user/skill-gap"
                   state={{ selectedIndustry: ind }}
@@ -119,7 +119,7 @@ const UserDashboard = () => {
         <section>
           <div className="section-header">
             <div>
-              <h3 className="text-xl font-bold text-white">In-Demand Skills</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">In-Demand Skills</h3>
               <p className="text-sm text-slate-500 mt-0.5">Skills with high market demand</p>
             </div>
           </div>
@@ -130,7 +130,7 @@ const UserDashboard = () => {
                   <div className="w-7 h-7 rounded-lg bg-indigo-900/60 flex items-center justify-center flex-shrink-0">
                     <span className="text-indigo-400 text-xs font-bold">{i + 1}</span>
                   </div>
-                  <span className="text-sm font-medium text-slate-300 flex-1">{skill.name}</span>
+                  <span className="text-sm font-medium text-slate-600 dark:text-slate-300 flex-1">{skill.name}</span>
                   <div className="flex flex-wrap gap-1">
                     {skill.mappedIndustries.slice(0, 2).map((ind) => (
                       <span key={ind._id} className="skill-chip">{ind.name}</span>
@@ -146,7 +146,7 @@ const UserDashboard = () => {
         <section>
           <div className="section-header">
             <div>
-              <h3 className="text-xl font-bold text-white">Open Internships</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Open Internships</h3>
               <p className="text-sm text-slate-500 mt-0.5">Available placement opportunities</p>
             </div>
           </div>
@@ -155,7 +155,7 @@ const UserDashboard = () => {
               {internships.slice(0, 6).map((intern) => (
                 <div key={intern._id} className="px-5 py-4 hover:bg-white/[0.02] transition-colors">
                   <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <h4 className="text-sm font-semibold text-white leading-tight">{intern.title}</h4>
+                    <h4 className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">{intern.title}</h4>
                     <span className="flex items-center gap-1 text-[10px] text-slate-500 font-medium flex-shrink-0 mt-0.5">
                       <ClockIcon className="w-3 h-3" />{intern.duration}
                     </span>

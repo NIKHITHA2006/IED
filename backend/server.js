@@ -9,6 +9,7 @@ const industryRoutes = require('./routes/industryRoutes');
 const skillRoutes = require('./routes/skillRoutes');
 const internshipRoutes = require('./routes/internshipRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
+const companyRoutes = require('./routes/companyRoutes');
 
 dotenv.config();
 connectDB();
@@ -23,6 +24,7 @@ app.use('/api/industries', industryRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/internships', internshipRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/companies', companyRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running...');

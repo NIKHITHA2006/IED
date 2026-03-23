@@ -21,8 +21,8 @@ const CHART_COLORS = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b'];
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="card px-3 py-2 text-xs font-medium text-slate-300">
-      <p className="text-slate-400 mb-1">{label}</p>
+    <div className="card px-3 py-2 text-xs font-medium text-slate-600 dark:text-slate-300">
+      <p className="text-slate-500 dark:text-slate-400 mb-1">{label}</p>
       {payload.map((p, i) => (
         <p key={i} style={{ color: p.color }}>{p.name}: <strong>{p.value}</strong></p>
       ))}
@@ -43,7 +43,7 @@ const KpiCard = ({ title, value, icon: Icon, color, delay }) => (
         <Icon className="w-4 h-4" style={{ color }} />
       </div>
     </div>
-    <p className="text-3xl font-bold text-white">{value ?? '–'}</p>
+    <p className="text-3xl font-bold text-slate-900 dark:text-white">{value ?? '–'}</p>
   </motion.div>
 );
 
@@ -112,19 +112,19 @@ const AdminDashboard = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Analytics Overview</h2>
-          <p className="text-slate-400 text-sm mt-1">Platform-wide metrics and insights</p>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Analytics Overview</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">Platform-wide metrics and insights</p>
         </div>
         <div className="flex gap-2">
           <button
             onClick={exportPDF}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-300 border border-white/10 rounded-lg hover:bg-white/5 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-white/5 transition-colors"
           >
             <ArrowDownTrayIcon className="w-4 h-4 text-red-400" /> PDF
           </button>
           <button
             onClick={exportExcel}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-slate-900 dark:text-white rounded-lg transition-colors"
           >
             <ArrowDownTrayIcon className="w-4 h-4" /> Excel
           </button>
@@ -142,7 +142,7 @@ const AdminDashboard = () => {
       {/* Charts row 1 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }} className="card p-6">
-          <h3 className="text-sm font-semibold text-slate-300 mb-6">Skill Market Demand</h3>
+          <h3 className="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-6">Skill Market Demand</h3>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={stats.barChartData} margin={{ bottom: 16 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
@@ -155,7 +155,7 @@ const AdminDashboard = () => {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="card p-6">
-          <h3 className="text-sm font-semibold text-slate-300 mb-6">Internship Distribution</h3>
+          <h3 className="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-6">Internship Distribution</h3>
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
               <Pie data={stats.pieChartData} dataKey="value" innerRadius={55} outerRadius={85} paddingAngle={4} stroke="none">
@@ -171,7 +171,7 @@ const AdminDashboard = () => {
       {/* Charts row 2 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42 }} className="card p-6">
-          <h3 className="text-sm font-semibold text-slate-300 mb-6">Industry Growth Trend</h3>
+          <h3 className="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-6">Industry Growth Trend</h3>
           <ResponsiveContainer width="100%" height={220}>
             <AreaChart data={stats.lineChartData} margin={{ bottom: 16 }}>
               <defs>
@@ -190,7 +190,7 @@ const AdminDashboard = () => {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.49 }} className="card p-6">
-          <h3 className="text-sm font-semibold text-slate-300 mb-1">Critical Skill Gaps</h3>
+          <h3 className="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-1">Critical Skill Gaps</h3>
           <p className="text-xs text-slate-500 mb-6">Most frequently missing skills across reports</p>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={skillGap} layout="vertical" margin={{ left: 8 }}>

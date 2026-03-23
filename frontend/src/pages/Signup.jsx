@@ -60,7 +60,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0d0f14] px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0d0f14] px-4 py-12">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -71,12 +71,12 @@ const Signup = () => {
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center">
-              <UserIcon className="w-5 h-5 text-white" />
+              <UserIcon className="w-5 h-5 text-slate-900 dark:text-white" />
             </div>
-            <span className="text-2xl font-bold text-white tracking-tight">IED Platform</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">IED Platform</span>
           </div>
-          <h1 className="text-3xl font-bold text-white mb-1">Create an account</h1>
-          <p className="text-slate-400 text-sm">Start exploring industry insights and skill gap analysis</p>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-1">Create an account</h1>
+          <p className="text-slate-500 dark:text-slate-400 text-sm">Start exploring industry insights and skill gap analysis</p>
         </div>
 
         {/* Card */}
@@ -94,7 +94,7 @@ const Signup = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Full Name */}
             <div>
-              <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
                 Full Name
               </label>
               <div className="relative">
@@ -112,7 +112,7 @@ const Signup = () => {
 
             {/* Email */}
             <div>
-              <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
                 Email Address
               </label>
               <div className="relative">
@@ -130,7 +130,7 @@ const Signup = () => {
 
             {/* Password */}
             <div>
-              <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
                 Password
               </label>
               <div className="relative">
@@ -146,7 +146,7 @@ const Signup = () => {
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-600 dark:text-slate-300 transition-colors"
                 >
                   {showPass ? <EyeSlashIcon className="w-4 h-4" /> : <EyeIcon className="w-4 h-4" />}
                 </button>
@@ -171,7 +171,7 @@ const Signup = () => {
 
             {/* Confirm Password */}
             <div>
-              <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
                 Confirm Password
               </label>
               <div className="relative">
@@ -192,7 +192,7 @@ const Signup = () => {
                   <button
                     type="button"
                     onClick={() => setShowConfirm(!showConfirm)}
-                    className="text-slate-500 hover:text-slate-300 transition-colors"
+                    className="text-slate-500 hover:text-slate-600 dark:text-slate-300 transition-colors"
                   >
                     {showConfirm ? <EyeSlashIcon className="w-4 h-4" /> : <EyeIcon className="w-4 h-4" />}
                   </button>
@@ -216,7 +216,7 @@ const Signup = () => {
             >
               {loading ? (
                 <>
-                  <svg className="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin w-4 h-4 text-slate-900 dark:text-white" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>

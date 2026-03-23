@@ -70,10 +70,10 @@ const IndustryManagement = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Industries</h2>
-          <p className="text-slate-400 text-sm mt-1">{industries.length} industry verticals indexed</p>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Industries</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">{industries.length} industry verticals indexed</p>
         </div>
-        <button onClick={openCreate} className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors">
+        <button onClick={openCreate} className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-slate-900 dark:text-white text-sm font-semibold rounded-lg transition-colors">
           <PlusIcon className="w-4 h-4 stroke-[2.5px]" /> Add Industry
         </button>
       </div>
@@ -110,22 +110,22 @@ const IndustryManagement = () => {
                 {ind.image ? (
                   <img src={ind.image} alt={ind.name} className="industry-img" />
                 ) : (
-                  <div className="industry-img bg-slate-800 flex items-center justify-center text-slate-600">No Image</div>
+                  <div className="industry-img bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600">No Image</div>
                 )}
 
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="text-base font-bold text-white leading-tight">{ind.name}</h3>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white leading-tight">{ind.name}</h3>
                     <span className={`badge flex-shrink-0 ${growthColors[ind.growthLevel] || 'badge-blue'}`}>
                       {ind.growthLevel}
                     </span>
                   </div>
-                  <p className="text-slate-400 text-xs leading-relaxed line-clamp-2 mb-5">{ind.description}</p>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed line-clamp-2 mb-5">{ind.description}</p>
 
                   <div className="flex gap-2">
                     <button
                       onClick={() => openEdit(ind)}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold text-slate-300 border border-white/10 rounded-lg hover:bg-white/5 transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-white/5 transition-colors"
                     >
                       <PencilIcon className="w-3.5 h-3.5" /> Edit
                     </button>
@@ -162,31 +162,31 @@ const IndustryManagement = () => {
               exit={{ opacity: 0, scale: 0.97, y: 8 }}
               className="modal-box"
             >
-              <h3 className="text-lg font-bold text-white mb-6">{editing ? 'Edit Industry' : 'New Industry'}</h3>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">{editing ? 'Edit Industry' : 'New Industry'}</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Name</label>
+                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Name</label>
                   <input required className="input" placeholder="e.g. Artificial Intelligence" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Description</label>
+                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Description</label>
                   <textarea required rows={3} className="input resize-none" placeholder="Brief description..." value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Growth Level</label>
+                    <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Growth Level</label>
                     <select className="input" value={form.growthLevel} onChange={(e) => setForm({ ...form, growthLevel: e.target.value })}>
                       {['Low', 'Medium', 'High', 'Very High'].map((g) => <option key={g} value={g}>{g}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Image URL</label>
+                    <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Image URL</label>
                     <input required className="input" placeholder="https://..." value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
                   </div>
                 </div>
                 <div className="flex gap-3 pt-2">
-                  <button type="button" onClick={() => setModalOpen(false)} className="flex-1 py-2.5 text-sm font-semibold border border-white/10 rounded-lg text-slate-400 hover:bg-white/5 transition-colors">Cancel</button>
-                  <button type="submit" className="flex-1 py-2.5 text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors">Save</button>
+                  <button type="button" onClick={() => setModalOpen(false)} className="flex-1 py-2.5 text-sm font-semibold border border-slate-200 dark:border-white/10 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-white/5 transition-colors">Cancel</button>
+                  <button type="submit" className="flex-1 py-2.5 text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-slate-900 dark:text-white rounded-lg transition-colors">Save</button>
                 </div>
               </form>
             </motion.div>

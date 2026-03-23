@@ -10,22 +10,33 @@ import {
   ArrowLeftOnRectangleIcon,
   Bars3Icon,
   XMarkIcon,
+  BuildingOfficeIcon,
+  SunIcon,
+  MoonIcon
 } from '@heroicons/react/24/outline';
+import { useTheme } from '../context/ThemeContext';
 
 const adminNavItems = [
   { label: 'Dashboard', path: '/admin', icon: HomeIcon, exact: true },
   { label: 'Industries', path: '/admin/industries', icon: BriefcaseIcon },
   { label: 'Skills', path: '/admin/skills', icon: AcademicCapIcon },
   { label: 'Internships', path: '/admin/internships', icon: PuzzlePieceIcon },
+  { label: 'Companies', path: '/admin/companies', icon: BuildingOfficeIcon },
 ];
 
 const userNavItems = [
   { label: 'Discovery', path: '/user', icon: HomeIcon, exact: true },
   { label: 'Skill Gap Analysis', path: '/user/skill-gap', icon: ChartBarIcon },
+  { label: 'Internships', path: '/user/internships', icon: PuzzlePieceIcon },
+  { label: 'Skills', path: '/user/skills', icon: AcademicCapIcon },
+  { label: 'Company Requirements', path: '/user/companies', icon: BuildingOfficeIcon },
 ];
 
 const DashboardLayout = ({ role }) => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const isDarkMode = theme === 'dark';
+
   const navigate = useNavigate();
   const location = useLocation();
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || 'null');
@@ -53,15 +64,15 @@ const DashboardLayout = ({ role }) => {
   };
 
   const Sidebar = () => (
-    <aside className="flex flex-col h-full w-64 bg-[#10131a] border-r border-white/[0.07]">
+    <aside className="flex flex-col h-full w-64 bg-white dark:bg-[#10131a] border-r border-slate-200 dark:border-white/[0.07]">
       {/* Brand */}
-      <div className="p-5 border-b border-white/[0.07]">
+      <div className="p-5 border-b border-slate-200 dark:border-white/[0.07]">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center flex-shrink-0">
-            <span className="text-white text-xs font-bold">IED</span>
+            <span className="text-slate-900 dark:text-white text-xs font-bold">IED</span>
           </div>
           <div>
-            <p className="text-sm font-semibold text-white leading-tight">IED Platform</p>
+            <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">IED Platform</p>
             <p className="text-[10px] text-slate-500 capitalize">{role} workspace</p>
           </div>
         </div>
@@ -86,13 +97,13 @@ const DashboardLayout = ({ role }) => {
       </nav>
 
       {/* Footer */}
-      <div className="p-3 border-t border-white/[0.07]">
+      <div className="p-3 border-t border-slate-200 dark:border-white/[0.07]">
         <div className="flex items-center gap-3 px-3 py-2 mb-1">
-          <div className="w-7 h-7 rounded-full bg-indigo-700 flex items-center justify-center text-xs font-bold text-white flex-shrink-0">
+          <div className="w-7 h-7 rounded-full bg-indigo-700 flex items-center justify-center text-xs font-bold text-slate-900 dark:text-white flex-shrink-0">
             {userInfo.name?.charAt(0)?.toUpperCase()}
           </div>
           <div className="min-w-0">
-            <p className="text-xs font-semibold text-slate-300 truncate">{userInfo.name}</p>
+            <p className="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate">{userInfo.name}</p>
             <p className="text-[10px] text-slate-500 truncate">{userInfo.email}</p>
           </div>
         </div>
@@ -109,7 +120,7 @@ const DashboardLayout = ({ role }) => {
   );
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#0d0f14]">
+    <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-[#0d0f14]">
       {/* Desktop Sidebar */}
       <div className="hidden lg:flex flex-shrink-0">
         <Sidebar />
@@ -131,20 +142,27 @@ const DashboardLayout = ({ role }) => {
       {/* Main */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top navbar */}
-        <header className="flex items-center justify-between px-6 h-14 border-b border-white/[0.07] bg-[#10131a] flex-shrink-0">
+        <header className="flex items-center justify-between px-6 h-14 border-b border-slate-200 dark:border-white/[0.07] bg-white dark:bg-[#10131a] flex-shrink-0">
           <button
-            className="lg:hidden p-1.5 rounded-lg hover:bg-white/5 text-slate-400"
+            className="lg:hidden p-1.5 rounded-lg hover:bg-white/5 text-slate-500 dark:text-slate-400"
             onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
           >
             {mobileSidebarOpen ? <XMarkIcon className="w-5 h-5" /> : <Bars3Icon className="w-5 h-5" />}
           </button>
 
           {/* Page title from nav */}
-          <p className="text-sm font-semibold text-slate-300">
+          <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">
             {navItems.find((item) => isActive(item))?.label || 'Dashboard'}
           </p>
 
           <div className="flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 text-slate-500 dark:text-slate-400 transition-colors"
+              title="Toggle Theme"
+            >
+              {isDarkMode ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
+            </button>
             <span className="badge badge-blue hidden sm:inline-flex">{role}</span>
             <div className="w-7 h-7 rounded-full bg-indigo-700 flex items-center justify-center text-xs font-bold text-white">
               {userInfo.name?.charAt(0)?.toUpperCase()}

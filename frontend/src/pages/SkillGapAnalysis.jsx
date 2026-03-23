@@ -107,14 +107,14 @@ const SkillGapAnalysis = () => {
     <div className="max-w-5xl mx-auto space-y-8 fade-in pb-12">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold text-white">Skill Gap Analysis</h2>
-        <p className="text-slate-400 text-sm mt-1">Compare your current skills against industry requirements</p>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Skill Gap Analysis</h2>
+        <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">Compare your current skills against industry requirements</p>
       </div>
 
       {/* Industry Selector */}
       <div className="card p-5 flex flex-col sm:flex-row sm:items-center gap-4">
         <div className="flex-1">
-          <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Select Industry</label>
+          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Select Industry</label>
           <select
             className="input"
             value={selectedIndustry?._id || ''}
@@ -128,7 +128,7 @@ const SkillGapAnalysis = () => {
           <div className="flex items-center gap-3 flex-shrink-0">
             <img src={selectedIndustry.image} alt="" className="w-12 h-12 rounded-lg object-cover" />
             <div>
-              <p className="text-sm font-semibold text-white">{selectedIndustry.name}</p>
+              <p className="text-sm font-semibold text-slate-900 dark:text-white">{selectedIndustry.name}</p>
               <p className="text-xs text-slate-500">{selectedIndustry.growthLevel} growth</p>
             </div>
           </div>
@@ -141,7 +141,7 @@ const SkillGapAnalysis = () => {
             className="card py-20 flex flex-col items-center justify-center text-center"
           >
             <ChartIcon className="w-10 h-10 text-slate-700 mb-4" />
-            <p className="text-slate-400 font-medium">Select an industry to get started</p>
+            <p className="text-slate-500 dark:text-slate-400 font-medium">Select an industry to get started</p>
             <p className="text-slate-600 text-sm mt-1">You'll see relevant skills to self-assess</p>
           </motion.div>
         ) : analyzing ? (
@@ -149,20 +149,20 @@ const SkillGapAnalysis = () => {
             className="card py-20 flex flex-col items-center justify-center text-center"
           >
             <div className="w-12 h-12 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin mb-6" />
-            <p className="text-slate-300 font-semibold">Analyzing your profile…</p>
+            <p className="text-slate-600 dark:text-slate-300 font-semibold">Analyzing your profile…</p>
             <p className="text-slate-500 text-sm mt-1">Comparing against {skills.length} skills in {selectedIndustry.name}</p>
           </motion.div>
         ) : !result ? (
           <motion.div key="selector" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-lg font-bold text-white">Select Skills You Know</h3>
-                <p className="text-slate-400 text-xs mt-0.5">{knownSkills.length} of {skills.length} selected</p>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Select Skills You Know</h3>
+                <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">{knownSkills.length} of {skills.length} selected</p>
               </div>
               {knownSkills.length > 0 && (
                 <button
                   onClick={() => setKnownSkills([])}
-                  className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
+                  className="text-xs text-slate-500 hover:text-slate-600 dark:text-slate-300 transition-colors"
                 >
                   Clear all
                 </button>
@@ -187,12 +187,12 @@ const SkillGapAnalysis = () => {
                         whileTap={{ scale: 0.97 }}
                         onClick={() => toggleSkill(skill._id)}
                         className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all ${selected
-                            ? 'border-indigo-500/60 bg-indigo-500/10 text-white'
-                            : 'border-white/8 bg-white/3 text-slate-400 hover:bg-white/5 hover:text-slate-300'
+                            ? 'border-indigo-500/60 bg-indigo-500/10 text-slate-900 dark:text-white'
+                            : 'border-white/8 bg-white/3 text-slate-500 dark:text-slate-400 hover:bg-white/5 hover:text-slate-600 dark:text-slate-300'
                           }`}
                       >
                         <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${selected ? 'border-indigo-400 bg-indigo-500' : 'border-slate-600'}`}>
-                          {selected && <CheckCircleIcon className="w-4 h-4 text-white -m-0.5" />}
+                          {selected && <CheckCircleIcon className="w-4 h-4 text-slate-900 dark:text-white -m-0.5" />}
                         </div>
                         <span className="text-xs font-semibold leading-tight">{skill.name}</span>
                       </motion.button>
@@ -205,7 +205,7 @@ const SkillGapAnalysis = () => {
                   <button
                     onClick={handleAnalyze}
                     disabled={knownSkills.length === 0}
-                    className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-slate-900 dark:text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     Analyze Gap
                   </button>
@@ -243,13 +243,13 @@ const SkillGapAnalysis = () => {
                 <div className="flex gap-3 flex-shrink-0">
                   <button
                     onClick={exportPDF}
-                    className="flex items-center gap-2 px-4 py-2 border border-white/10 text-sm font-semibold text-slate-300 rounded-lg hover:bg-white/5 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-white/10 text-sm font-semibold text-slate-600 dark:text-slate-300 rounded-lg hover:bg-white/5 transition-colors"
                   >
                     <ArrowDownTrayIcon className="w-4 h-4" /> Export PDF
                   </button>
                   <button
                     onClick={() => { setResult(null); setKnownSkills([]); }}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-400 rounded-lg hover:bg-white/5 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-500 dark:text-slate-400 rounded-lg hover:bg-white/5 transition-colors"
                   >
                     <ArrowPathIcon className="w-4 h-4" /> Re-analyze
                   </button>
@@ -262,7 +262,7 @@ const SkillGapAnalysis = () => {
               <div className="card p-5">
                 <div className="flex items-center gap-2 mb-4">
                   <CheckCircleIcon className="w-5 h-5 text-emerald-400" />
-                  <h4 className="text-sm font-bold text-white">Matched Skills ({result.matched.length})</h4>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">Matched Skills ({result.matched.length})</h4>
                 </div>
                 <div className="space-y-2 max-h-72 overflow-y-auto">
                   {result.matched.length === 0 ? (
@@ -270,7 +270,7 @@ const SkillGapAnalysis = () => {
                   ) : result.matched.map((s) => (
                     <div key={s._id} className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10">
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
-                      <span className="text-sm text-slate-300 font-medium">{s.name}</span>
+                      <span className="text-sm text-slate-600 dark:text-slate-300 font-medium">{s.name}</span>
                     </div>
                   ))}
                 </div>
@@ -279,7 +279,7 @@ const SkillGapAnalysis = () => {
               <div className="card p-5">
                 <div className="flex items-center gap-2 mb-4">
                   <XCircleIcon className="w-5 h-5 text-red-400" />
-                  <h4 className="text-sm font-bold text-white">Missing Skills ({result.missing.length})</h4>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">Missing Skills ({result.missing.length})</h4>
                 </div>
                 <div className="space-y-2 max-h-72 overflow-y-auto">
                   {result.missing.length === 0 ? (
@@ -287,7 +287,7 @@ const SkillGapAnalysis = () => {
                   ) : result.missing.map((s) => (
                     <div key={s._id} className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-red-500/5 border border-red-500/10">
                       <div className="w-1.5 h-1.5 rounded-full bg-red-400 flex-shrink-0" />
-                      <span className="text-sm text-slate-300 font-medium">{s.name}</span>
+                      <span className="text-sm text-slate-600 dark:text-slate-300 font-medium">{s.name}</span>
                     </div>
                   ))}
                 </div>
@@ -297,12 +297,12 @@ const SkillGapAnalysis = () => {
             {/* Recommended Internships */}
             {internships.length > 0 && (
               <div className="card p-5">
-                <h4 className="text-sm font-bold text-white mb-4">Recommended Internships in {selectedIndustry.name}</h4>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4">Recommended Internships in {selectedIndustry.name}</h4>
                 <div className="space-y-3">
                   {internships.slice(0, 4).map((intern) => (
                     <div key={intern._id} className="flex items-start justify-between gap-4 px-4 py-3.5 rounded-lg bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] transition-colors">
                       <div>
-                        <p className="text-sm font-semibold text-white">{intern.title}</p>
+                        <p className="text-sm font-semibold text-slate-900 dark:text-white">{intern.title}</p>
                         <p className="text-xs text-slate-500 mt-0.5">{intern.duration}</p>
                       </div>
                       <div className="flex flex-wrap gap-1 justify-end">
