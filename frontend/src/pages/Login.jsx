@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   const fillDemo = (role) => {
-    if (role === 'admin') { setEmail('admin@ied.com'); setPassword('admin123'); }
+    if (role === 'admin') { setEmail('master@ied.com'); setPassword('admin123'); }
     else { setEmail('student@ied.com'); setPassword('user123'); }
   };
 
@@ -146,7 +146,7 @@ const Login = () => {
         <div className="mt-6 grid grid-cols-2 gap-3 text-xs text-center text-slate-500">
           <div className="card px-4 py-3">
             <span className="block font-semibold text-indigo-400 mb-1">Admin Access</span>
-            <span>admin@ied.com</span><br />
+            <span>master@ied.com</span><br />
             <span>admin123</span>
           </div>
           <div className="card px-4 py-3">
