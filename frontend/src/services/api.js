@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://ied-oqka.onrender.com',
+  baseURL: 'https://ied-oqka.onrender.com/api',
 });
 
 api.interceptors.request.use((config) => {
