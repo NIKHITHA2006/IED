@@ -34,10 +34,10 @@ function processDirectory(dir) {
       for (const { regex, replacement } of replacements) {
         content = content.replace(regex, replacement);
       }
-      
+
       // Cleanup any duplicate dark classes if run multiple times
       content = content.replace(/dark:dark:/g, 'dark:');
-      
+
       if (content !== originalContent) {
         fs.writeFileSync(fullPath, content, 'utf8');
         console.log(`Updated: ${fullPath}`);
