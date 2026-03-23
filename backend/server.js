@@ -15,7 +15,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
 app.use(express.json());
+
+// ✅ Keep CORS simple (best for now)
 app.use(cors());
 
 // Routes
@@ -26,8 +29,15 @@ app.use('/api/internships', internshipRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/companies', companyRoutes);
 
+// ✅ Health check (important for Render)
 app.get('/', (req, res) => {
   res.send('API is running...');
+});
+
+// ✅ Basic error handler (optional but useful)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Server Error' });
 });
 
 const PORT = process.env.PORT || 5000;
