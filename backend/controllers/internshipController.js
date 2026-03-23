@@ -3,19 +3,13 @@ const Internship = require('../models/Internship');
 const crypto = require('crypto');
 
 const getInternships = async (req, res) => {
-  const internships = await Internship.find({}).populate('industry').populate('requiredSkills');
-  
-  // Ensure applyUrl exists
-  let updated = false;
-  for (let internship of internships) {
-    if (!internship.applyUrl) {
-      internship.applyUrl = 'https://unstop.com/internship?quickApply=true&usertype=students&domain=2&oppstatus=open';
-      await internship.save();
-      updated = true;
-    }
+  try {
+    const internships = await Internship.find({}).populate('industry').populate('requiredSkills');
+    res.json(internships);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error fetching internships' });
   }
-  
-  res.json(internships);
 };
 
 const createInternship = async (req, res) => {

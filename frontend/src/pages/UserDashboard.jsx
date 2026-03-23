@@ -18,14 +18,25 @@ const UserDashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([api.get('/industries'), api.get('/skills'), api.get('/internships')])
-      .then(([r1, r2, r3]) => {
-        setIndustries(r1.data);
-        setSkills(r2.data);
-        setInternships(r3.data);
-      })
-      .catch(console.error)
-      .finally(() => setLoading(false));
+    const fetchData = async () => {
+      try {
+        const { data } = await api.get('/industries');
+        setIndustries(data);
+      } catch (err) { console.error(err); }
+
+      try {
+        const { data } = await api.get('/skills');
+        setSkills(data);
+      } catch (err) { console.error(err); }
+
+      try {
+        const { data } = await api.get('/internships');
+        setInternships(data);
+      } catch (err) { console.error(err); }
+
+      setLoading(false);
+    };
+    fetchData();
   }, []);
 
   if (loading) return (
@@ -132,7 +143,7 @@ const UserDashboard = () => {
                   </div>
                   <span className="text-sm font-medium text-slate-600 dark:text-slate-300 flex-1">{skill.name}</span>
                   <div className="flex flex-wrap gap-1">
-                    {skill.mappedIndustries.slice(0, 2).map((ind) => (
+                    {skill.mappedIndustries?.slice(0, 2).map((ind) => (
                       <span key={ind._id} className="skill-chip">{ind.name}</span>
                     ))}
                   </div>
@@ -164,10 +175,10 @@ const UserDashboard = () => {
                     <span className="badge badge-blue mb-2">{intern.industry.name}</span>
                   )}
                   <div className="flex flex-wrap gap-1.5 mt-2">
-                    {intern.requiredSkills.slice(0, 4).map((s) => (
+                    {intern.requiredSkills?.slice(0, 4).map((s) => (
                       <span key={s._id} className="skill-chip">{s.name}</span>
                     ))}
-                    {intern.requiredSkills.length > 4 && (
+                    {intern.requiredSkills?.length > 4 && (
                       <span className="text-[10px] text-slate-600 font-medium">+{intern.requiredSkills.length - 4}</span>
                     )}
                   </div>

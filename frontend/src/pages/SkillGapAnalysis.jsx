@@ -32,11 +32,16 @@ const SkillGapAnalysis = () => {
     setResult(null);
     setKnownSkills([]);
     try {
-      const [r1, r2] = await Promise.all([api.get('/skills'), api.get('/internships')]);
-      setSkills(r1.data.filter((s) => s.mappedIndustries.some((i) => i._id === industryId)));
-      setInternships(r2.data.filter((i) => i.industry?._id === industryId));
+      const { data: skillsData } = await api.get('/skills');
+      setSkills(skillsData.filter((s) => s.mappedIndustries?.some((i) => i._id === industryId)));
     } catch (err) { console.error(err); }
-    finally { setLoading(false); }
+
+    try {
+      const { data: internshipsData } = await api.get('/internships');
+      setInternships(internshipsData.filter((i) => i.industry?._id === industryId));
+    } catch (err) { console.error(err); }
+
+    setLoading(false);
   };
 
   const handleIndustryChange = (id) => {

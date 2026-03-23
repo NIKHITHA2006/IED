@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../services/api';
 
 const StudentSkills = () => {
   const [skills, setSkills] = useState([]);
@@ -7,7 +7,7 @@ const StudentSkills = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const res = await axios.get('https://ied-oqka.onrender.com/api/skills');
+        const res = await api.get('/skills');
         setSkills(res.data);
       } catch (error) {
         console.error('Error fetching skills', error);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const StudentInternships = () => {
@@ -9,7 +9,7 @@ const StudentInternships = () => {
   useEffect(() => {
     const fetchInternships = async () => {
       try {
-        const res = await axios.get('https://ied-oqka.onrender.com/api/internships');
+        const res = await api.get('/internships');
         setInternships(res.data);
       } catch (error) {
         console.error('Error fetching internships', error);

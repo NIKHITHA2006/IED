@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const StudentCompanies = () => {
@@ -9,7 +9,7 @@ const StudentCompanies = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const res = await axios.get('https://ied-oqka.onrender.com/api/companies');
+        const res = await api.get('/companies');
         setCompanies(res.data);
       } catch (error) {
         console.error('Error fetching companies', error);

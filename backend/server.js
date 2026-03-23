@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 // ✅ Basic error handler (optional but useful)
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ message: 'Server Error' });
+  res.status(500).json({ message: 'Server Error', error: err.stack || err.message });
 });
 
 const PORT = process.env.PORT || 5000;
