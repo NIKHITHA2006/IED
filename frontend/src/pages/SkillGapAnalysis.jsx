@@ -9,7 +9,7 @@ import {
   ArrowPathIcon,
 } from '@heroicons/react/24/outline';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 const SkillGapAnalysis = () => {
   const location = useLocation();
@@ -83,7 +83,7 @@ const SkillGapAnalysis = () => {
     doc.text(`Industry: ${result.matched ? selectedIndustry.name : ''}`, 14, 26);
     doc.text(`Readiness: ${result.percentage}%   |   Date: ${new Date().toLocaleDateString()}`, 14, 32);
     doc.setTextColor(0);
-    doc.autoTable({
+    autoTable(doc, {
       head: [['Skill', 'Status']],
       body: [
         ...result.matched.map((s) => [s.name, '✓ Matched']),
@@ -93,7 +93,7 @@ const SkillGapAnalysis = () => {
       theme: 'striped',
     });
     if (internships.length > 0) {
-      doc.autoTable({
+      autoTable(doc, {
         head: [['Recommended Internship', 'Duration']],
         body: internships.slice(0, 5).map((i) => [i.title, i.duration]),
         startY: doc.lastAutoTable.finalY + 12,

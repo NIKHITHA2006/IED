@@ -152,7 +152,7 @@ const CompanyRequirementsManagement = () => {
             <div>
               <label className="block text-slate-500 dark:text-slate-400 mb-2">Required Skills</label>
               <div className="max-h-40 overflow-y-auto space-y-1 bg-white dark:bg-[#1a1d24] p-2 rounded-lg border border-slate-200 dark:border-white/[0.1]">
-                {skills.filter(s => s.industry?._id === formData.industry || formData.industry === '').map(skill => (
+                {skills.filter(s => s.mappedIndustries?.some(ind => ind._id === formData.industry) || formData.industry === '').map(skill => (
                   <label key={skill._id} className="flex items-center gap-2 cursor-pointer text-slate-600 dark:text-slate-300">
                     <input
                       type="checkbox"
@@ -163,7 +163,7 @@ const CompanyRequirementsManagement = () => {
                     <span className="text-xs">{skill.name}</span>
                   </label>
                 ))}
-                {skills.length === 0 && <span className="text-xs text-slate-500">No skills available</span>}
+                {skills.filter(s => s.mappedIndustries?.some(ind => ind._id === formData.industry) || formData.industry === '').length === 0 && <span className="text-xs text-slate-500">No skills available</span>}
               </div>
             </div>
 

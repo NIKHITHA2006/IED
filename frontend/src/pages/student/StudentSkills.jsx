@@ -17,9 +17,16 @@ const StudentSkills = () => {
   }, []);
 
   const groupedSkills = skills.reduce((acc, skill) => {
-    const industryName = skill.industry?.name || 'General';
-    if (!acc[industryName]) acc[industryName] = [];
-    acc[industryName].push(skill);
+    if (skill.mappedIndustries && skill.mappedIndustries.length > 0) {
+      skill.mappedIndustries.forEach(ind => {
+        const industryName = ind.name || 'General';
+        if (!acc[industryName]) acc[industryName] = [];
+        acc[industryName].push(skill);
+      });
+    } else {
+      if (!acc['General']) acc['General'] = [];
+      acc['General'].push(skill);
+    }
     return acc;
   }, {});
 
